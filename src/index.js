@@ -1,8 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import App from "./app.js";
 
-const Index = () => {
-  return <div>Hello React!</div>;
-};
+ReactDOM.render(<App />, document.getElementById("root"));
 
-ReactDOM.render(<Index />, document.getElementById("root"));
+if (module.hot) {
+  module.hot.accept('./app.js', function() {
+    ReactDOM.render(<App />, document.getElementById("root"));
+  });
+}
