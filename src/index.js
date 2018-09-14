@@ -1,5 +1,8 @@
-function main() {
-  document.getElementById('root').innerHTML = 'Hello, js';
-}
+import React from "react";
+import ReactDOM from "react-dom";
 
-main();
+const Index = () => {
+  return <div>Hello React!</div>;
+};
+
+ReactDOM.render(<Index />, document.getElementById("root"));
