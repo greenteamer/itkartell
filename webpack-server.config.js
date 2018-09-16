@@ -1,14 +1,16 @@
+const nodeExternals = require('webpack-node-externals');
 const webpack = require('webpack');
 const path = require('path');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+
 
 module.exports = {
-  entry: {
-    index: [
-      'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
-      './src/index.js',
-    ]
-  },
+  target: 'node',
+  externals: [nodeExternals()],
+  // entry: './server/index.js',
+  entry: [
+    'webpack-hot-middleware/client',
+    path.resolve(__dirname, 'server/index.js'),
+  ],
   module: {
     rules: [
       {
@@ -20,11 +22,8 @@ module.exports = {
       }
     ]
   },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-  ],
   output: {
-    filename: 'index.js',
+    filename: 'server.js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
   },
