@@ -1,5 +1,6 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
+import { StaticRouter } from 'react-router';
 import App from './app';
 
 
@@ -27,7 +28,11 @@ export default (req, res) => {
           <link rel='stylesheet' href='bundle.css'>
         </head>
         <body>
-          <div id='app'>${renderToString(<App />)}</div>
+          <div id='app'>${renderToString(
+            <StaticRouter location={req.url} context={{}}>
+              <App />
+            </StaticRouter>
+          )}</div>
           <script src='bundle.js'></script>
         </body>
       </html>
