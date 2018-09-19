@@ -2,20 +2,14 @@ import React from "react";
 import { Switch, Route, Link } from 'react-router-dom';
 // import ReactDOM from "react-dom";
 
+import Main from './main';
+
 const Page = () => (
   <div>Page</div>
 )
 
 const Page2 = () => (
   <div>Page2</div>
-)
-
-const Main = () => (
-  <div>
-    <h1>Main</h1>
-    <Link to="/page">Page</Link><br />
-    <Link to="/page2">Page 2</Link>
-  </div>
 )
 
 const NoMatch = () => (
