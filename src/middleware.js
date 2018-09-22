@@ -1,7 +1,14 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+
 import App from './app';
+import reducers from './reducers'
+
+
+const store = createStore(reducers);
 
 
 export default (req, res) => {
@@ -29,9 +36,11 @@ export default (req, res) => {
         </head>
         <body>
           <div id='app'>${renderToString(
-            <StaticRouter location={req.url} context={{}}>
-              <App />
-            </StaticRouter>
+            <Provider store={store}>
+              <StaticRouter location={req.url} context={{}}>
+                <App />
+              </StaticRouter>
+            </Provider>
           )}</div>
           <script src='bundle.js'></script>
         </body>
